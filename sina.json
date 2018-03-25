@@ -2,10 +2,98 @@
     "website_name":"新浪网",
     "url_ex":"http://sports.sina.com.cn/lottery/col/5.html",
     "encoding":"utf-8",
-    "find_tag_ex":"li",
+    "pattern_tag_ex":"li",
     "url_prefix":"http://sports.sina.com.cn",
-    "find_tag_in":"p",
+    "pattern_tag_in":"p",
+    "index_pattern":"\\d{5}",
+    "auther_pattern":"^(.*)双色球",
+    "ignore_auther_list":["蓝色妖姬", "财迷迷", "铁蛋", "馒头", "商业屠夫", "码上飞", "新浪彩票名家", "馒头1225", "程远", "匡吉", "乐心小天", "李絮儿", "颖彩"],
     "links":[
+        {
+            "auther":"玉荷",
+            "red_patterns":["红球大底（12码）："],
+            "blue_patterns":["蓝球四码："]
+        },
+        {
+            "auther":"黑蝴蝶",
+            "red_patterns":["红球大底：", "红球胆码： "],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"洞庭湖水",
+            "red_patterns":["红球12球推荐："],
+            "blue_patterns":["蓝球推荐："]
+        },
+        {
+            "auther":"程远",
+            "red_patterns":["红球加杀10码："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"昭明",
+            "red_patterns":["精选12码红球："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"昆仑",
+            "red_patterns":["红球四区分析:"],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"嘲风",
+            "red_patterns":["红球："],
+            "blue_patterns":["蓝球："]
+        },
+        {
+            "auther":"听雨",
+            "red_patterns":[""],
+            "blue_patterns":["蓝球关注："]
+        },
+        {
+            "auther":"明月",
+            "red_patterns":[""],
+            "blue_patterns":["蓝球关注："]
+        },
+        {
+            "auther":"南帝",
+            "red_patterns":["红球："],
+            "blue_patterns":["蓝球："]
+        },
+        {
+            "auther":"老K",
+            "red_patterns":["红球分析："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"清风",
+            "red_patterns":["红球："],
+            "blue_patterns":["蓝球："]
+        },
+        {
+            "auther":"苏会文",
+            "red_patterns":["前区15码："],
+            "blue_patterns":["四码："]
+        },
+        {
+            "auther":"程程",
+            "red_patterns":["综合推荐（1[25]码）："],
+            "blue_patterns":["本期蓝球："]
+        },
+        {
+            "auther":"优优",
+            "red_patterns":["综合推荐（1[2567]码?）码?："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"金虎",
+            "red_patterns":["红球大底（11码）："],
+            "blue_patterns":["蓝球4码："]
+        },
+        {
+            "auther":"黄小仙",
+            "red_patterns":["红球15码大底："],
+            "blue_patterns":["蓝球四码："]
+        },
         {
             "auther":"幸运女神",
             "red_patterns":["红球推荐："],
@@ -15,6 +103,16 @@
             "auther":"龙飞",
             "red_patterns":["红球推荐："],
             "blue_patterns":["蓝球推荐："]
+        },
+        {
+            "auther":"田广",
+            "red_patterns":[""],
+            "blue_patterns":["四码定蓝推荐："]
+        },
+        {
+            "auther":"龙天",
+            "red_patterns":["综合以上分析（12码）："],
+            "blue_patterns":[""]
         },
         {
             "auther":"残花月",
@@ -68,7 +166,7 @@
         },
         {
             "auther":"玉玲珑",
-            "red_patterns":["红球推荐："],
+            "red_patterns":["红球推荐：|红球推荐9码："],
             "blue_patterns":["蓝球四码："]
         },
         {
@@ -98,18 +196,14 @@
         },
         {
             "auther":"寒天",
-            "red_patterns":["红蓝球综合（12+3）"],
-            "blue_patterns":[""]
+            "red_patterns":[""],
+            "blue_patterns":[""],
+            "red_blue_patterns":["红蓝球综合（12.3）"]
         },
         {
             "auther":"以亦",
             "red_patterns":["红球12码："],
             "blue_patterns":["蓝球4码："]
-        },
-        {
-            "auther":"",
-            "red_patterns":[""],
-            "blue_patterns":[""]
         },
         {
             "auther":"陆海瑶",
@@ -118,8 +212,8 @@
         },
         {
             "auther":"秦风",
-            "red_patterns":["红球推荐："],
-            "blue_patterns":["蓝球推荐："]
+            "red_patterns":["红球推荐：|红球推荐（10码）"],
+            "blue_patterns":["蓝球推荐：|蓝球推荐（4码）"]
         },
         {
             "auther":"子墨",
@@ -138,7 +232,7 @@
         },
         {
             "auther":"韩鸷",
-            "red_patterns":["红球大底（16码）："],
+            "red_patterns":["红球大底（1[567]码）："],
             "blue_patterns":[""]
         },
         {
@@ -183,8 +277,9 @@
         },
         {
             "auther":"碧云天",
-            "red_patterns":["12+2码红蓝球预测："],
-            "blue_patterns":[""]
+            "red_patterns":[""],
+            "blue_patterns":[""],
+            "red_blue_patterns":["12\\+2码红蓝球预测：|12红\\+2蓝："]
         },
         {
             "auther":"朋哥",
@@ -228,6 +323,11 @@
         },
         {
             "auther":"红红蓝蓝",
+            "red_patterns":["红球推荐12码：","红球推荐3胆码："],
+            "blue_patterns":["蓝球推荐："]
+        },
+        {
+            "auther":"红红篮篮",
             "red_patterns":["红球推荐12码：","红球推荐3胆码："],
             "blue_patterns":["蓝球推荐："]
         },
