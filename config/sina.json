@@ -1,5 +1,6 @@
 {
-    "website_name":"新浪网",
+    "site_name":"sina",
+    "site_description":"新浪网",
     "url_ex":"http://sports.sina.com.cn/lottery/col/5.html",
     "encoding":"utf-8",
     "pattern_tag_ex":"li",

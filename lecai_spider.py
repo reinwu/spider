@@ -4,9 +4,9 @@ import config.cfg
 from lib.Logger import *
 from bs4 import BeautifulSoup
 
-# 可以抓取新浪网和彩宝网
+# 抓取乐彩网
 # 起始URL
-json_config = "./config/zhcw.json"
+json_config = "./config/lecai.json"
 f = open(json_config, 'r', encoding='utf-8')
 config_dict = json.load(f)
 site_name = config_dict['site_name']
@@ -14,8 +14,12 @@ site_name = config_dict['site_name']
 html = requests.get(config_dict['url_ex'])
 
 soup = BeautifulSoup(html.content, "html.parser", from_encoding='utf-8')
-
-tags = soup.find_all(config_dict['pattern_tag_ex'])
+tag_str = config_dict['pattern_tag_ex']['tag']
+if 'class' in config_dict['pattern_tag_ex']:
+    class_str = re.compile(config_dict['pattern_tag_ex']['class'])
+    tags = soup.find_all(tag_str, class_=class_str)
+else:
+    tags = soup.find_all(tag_str)
 
 # generate pre-defined auther list
 ignore_auther_list = config_dict['ignore_auther_list']
@@ -24,41 +28,6 @@ for link in config_dict['links']:
     auther_list.append(link['auther'])
 
 CURRENT_INDEX = str(config.cfg.CURRENT_INDEX)
-
-def extract_data_from_tag_int(tags_inner, pattern, split = None):
-    hit = 0
-    if pattern == "":
-        return hit
-    if len(tags_inner) == 0:
-        return hit
-    p = "(" + pattern + ")(.*)"
-    fit_lists = []
-    red_lists = []
-    blue_lists = []
-    for tag_inner in tags_inner:
-        predict_content = tag_inner.get_text()
-        match_list = re.findall(p, predict_content)
-                
-        if len(match_list) > 0:
-            hit += 1
-            if split:
-               [red_str,blue_str] = match_list[0][1].split(split)
-               red_list = re.findall(r"\d\d", red_str)
-               if red_list not in red_lists:
-                    red_lists.append(red_list)
-                    Logger.ok("\t\t" + pattern + "\t\t>>> RED" + str(red_list))
-               blue_list = re.findall(r"\d\d", blue_str)
-               if blue_list not in blue_lists:
-                    blue_lists.append(blue_list)
-                    Logger.ok("\t\t" + pattern + "\t\t>>> BLUE" + str(blue_list))
-            else:
-                fit_list = re.findall(r"\d\d", match_list[0][1])
-                if fit_list not in fit_lists:
-                    fit_lists.append(fit_list)
-                    Logger.ok("\t\t" + pattern + "\t\t>>> " + str(fit_list))
-    if hit == 0:
-        Logger.warn(auther + " Not match " + pattern)
-    return hit
 
 for tag in tags:
     try:
@@ -119,3 +88,37 @@ for tag in tags:
 
 Logger.ok("All done!")
 
+def extract_data_from_tag_int(tags_inner, pattern, split = None):
+    hit = 0
+    if pattern == "":
+        return hit
+    if len(tags_inner) == 0:
+        return hit
+    p = "(" + pattern + ")(.*)"
+    fit_lists = []
+    red_lists = []
+    blue_lists = []
+    for tag_inner in tags_inner:
+        predict_content = tag_inner.get_text()
+        match_list = re.findall(p, predict_content)
+                
+        if len(match_list) > 0:
+            hit += 1
+            if split:
+               [red_str,blue_str] = match_list[0][1].split(split)
+               red_list = re.findall(r"\d\d", red_str)
+               if red_list not in red_lists:
+                    red_lists.append(red_list)
+                    Logger.ok("\t\t" + pattern + "\t\t>>> RED" + str(red_list))
+               blue_list = re.findall(r"\d\d", blue_str)
+               if blue_list not in blue_lists:
+                    blue_lists.append(blue_list)
+                    Logger.ok("\t\t" + pattern + "\t\t>>> BLUE" + str(blue_list))
+            else:
+                fit_list = re.findall(r"\d\d", match_list[0][1])
+                if fit_list not in fit_lists:
+                    fit_lists.append(fit_list)
+                    Logger.ok("\t\t" + pattern + "\t\t>>> " + str(fit_list))
+    if hit == 0:
+        Logger.warn(auther + " Not match " + pattern)
+    return hit
