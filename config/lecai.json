@@ -9,53 +9,185 @@
     },
     "url_prefix":"http://www.17500.cn",
     "pattern_tag_in":"p",
-    "index_pattern":"\\d{5}",
+    "index_pattern":"\\d{5,7}",
     "auther_pattern":"^(.*)双色球",
-    "ignore_auther_list":["田广", "欧凯", "碧云天", "浩轩", "军辉", "高手的姐", "洞庭湖水", "麦丽素"],
+    "ignore_auther_list":["红　帆", "天下帮", "推背图", "4两搏千金", "大桥彩盟", "海融", "静宝贝", "ycwx186", "白鱼舟", "大胜寨", "强哥买彩", "蛋壳儿弟", "来了我的爱", "六脉神剑段语", "夜幕下的灯", "捣蛋", "无双谱", "人归何处641", "gao6611", "小菜菜", "gktgcxj888", "枫o", "超越的心", "老猫咪咪", "彻底删除", "deem", "搏胆王", "飞天流云", "zhenebaoping", "大玩家", "秋风123", "jiu128", "埋名隐姓", "ycwx186", "zhouzixin", "我热火", "小猴子大猩猩", "峨嵋道姑", "蓝色幽灵顺顺顺", "无号人", "抬头", "霹雳娇娃007", "圣骑士丹", "飘零888", "超越的心", "萍水相逢1238", "商水张磊", "强哥买彩", "眉山老彩民"],
     "links":[
         {
-            "auther":"福彩双色球",
-            "red_patterns":["重点推荐：红球："],
-            "blue_patterns":["蓝球："]
+            "auther":"4两搏千金",
+            "red_patterns":["综合17码："],
+            "blue_patterns":["围蓝："]
         },
         {
-            "auther":"中彩网-清风",
-            "red_patterns":["红球："],
-            "blue_patterns":["蓝球："]
-        },
-        {
-            "auther":"中彩网-老K",
-            "red_patterns":["红球分析："],
+            "auther":"草儿",
+            "red_patterns":["综合推荐18码："],
             "blue_patterns":[""]
         },
         {
-            "auther":"中彩网-南帝",
+            "auther":"海融",
             "red_patterns":[""],
-            "blue_patterns":["蓝球："]
+            "blue_patterns":["四码围蓝："]
         },
         {
-            "auther":"中彩网-明月",
-            "red_patterns":[""],
-            "blue_patterns":["蓝球："]
-        },
-        {
-            "auther":"中彩网-听雨",
-            "red_patterns":[""],
-            "blue_patterns":["蓝球关注："]
-        },
-        {
-            "auther":"中彩网-嘲风",
-            "red_patterns":["红球："],
-            "blue_patterns":["蓝球："]
-        },
-        {
-            "auther":"中彩网-昆仑",
-            "red_patterns":["红球四区分析: "],
+            "auther":"鄂尔多福",
+            "red_patterns":["红球精选组合："],
             "blue_patterns":[""]
         },
         {
-            "auther":"中彩网-昭明",
-            "red_patterns":["精选12码红球："],
+            "auther":"鑫盛彩吧8045",
+            "red_patterns":["红球12码复式："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"静宝贝",
+            "red_patterns":[""],
+            "blue_patterns":["蓝球="]
+        },
+        {
+            "auther":"有点歇顶",
+            "special_pattern":"next_sibling",
+            "red_patterns":["12红："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"搏哥",
+            "red_patterns":["胆码：", "12码：", "10码："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"幸运鑫",
+            "red_patterns":["十二红：","红球三胆："],
+            "blue_patterns":["四 蓝："]
+        },
+        {
+            "auther":"乜一",
+            "red_patterns":["三胆：","十红：", "围红："],
+            "blue_patterns":["四蓝："]
+        },
+        {
+            "auther":"松梅芷寒",
+            "special_pattern":"next_sibling",
+            "red_patterns":["红球15枚："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"若颜",
+            "red_patterns":["红球十八子：", "红三胆："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"朋友淡淡的回味",
+            "red_patterns":["十码推荐"],
+            "blue_patterns":["四码推荐"]
+        },
+        {
+            "auther":"fuguixing",
+            "red_patterns":["【17红】：","【12红】："],
+            "blue_patterns":["【四蓝】："]
+        },
+        {
+            "auther":"冷刀",
+            "red_patterns":["红球20红：", "红球15红："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"绝望计算",
+            "red_patterns":[""],
+            "blue_patterns":["四码围蓝"]
+        },
+        {
+            "auther":"福气战狼",
+            "red_patterns":["综合"],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"铁拐李",
+            "red_patterns":[""],
+            "blue_patterns":[""],
+            "red_blue_patterns":["铁拐李: "]
+        },
+        {
+            "auther":"汉钟离",
+            "red_patterns":[""],
+            "blue_patterns":[""],
+            "red_blue_patterns":["汉钟离: "]
+        },
+        {
+            "auther":"蓝采和",
+            "red_patterns":[""],
+            "blue_patterns":[""],
+            "red_blue_patterns":["蓝采和: "]
+        },
+        {
+            "auther":"何仙姑",
+            "red_patterns":[""],
+            "blue_patterns":[""],
+            "red_blue_patterns":["何仙姑: "]
+        },
+        {
+            "auther":"吕洞宾",
+            "red_patterns":[""],
+            "blue_patterns":[""],
+            "red_blue_patterns":["吕洞宾: "]
+        },
+        {
+            "auther":"韩湘子",
+            "red_patterns":[""],
+            "blue_patterns":[""],
+            "red_blue_patterns":["韩湘子: "]
+        },
+        {
+            "auther":"曹国舅",
+            "red_patterns":[""],
+            "blue_patterns":[""],
+            "red_blue_patterns":["曹国舅: "]
+        },
+        {
+            "auther":"张果老",
+            "red_patterns":[""],
+            "blue_patterns":[""],
+            "red_blue_patterns":["张果老: "]
+        },
+        {
+            "auther":"乐彩网628分析员",
+            "red_patterns":["红球："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"乐彩网000分析员",
+            "red_patterns":["红码推荐：","胆码推荐："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"冰晨彩票",
+            "red_patterns":["九码复式：","胆码组:"],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"临风大叔",
+            "red_patterns":["综合："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"sclg74",
+            "special_pattern":"next_sibling",
+            "red_patterns":["围15红："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"swm3355",
+            "red_patterns":["红球15码："],
+            "blue_patterns":[""]
+        },
+        {
+            "auther":"唐山战神",
+            "red_patterns":[""],
+            "blue_patterns":["四码推荐: "],
+            "red_blue_patterns":["综合复式："]
+        },
+        {
+            "auther":"lmf2009",
+            "red_patterns":["围红", "红胆"],
             "blue_patterns":[""]
         }
     ]

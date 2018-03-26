@@ -4,14 +4,19 @@ import config.cfg
 from lib.Logger import *
 from bs4 import BeautifulSoup
 
-# 抓取乐彩网
 # 起始URL
 json_config = "./config/lecai.json"
 f = open(json_config, 'r', encoding='utf-8')
 config_dict = json.load(f)
 site_name = config_dict['site_name']
+headers = {"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Language":"zh-CN,zh;q=0.8",
+    "User-Agent":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36",
+    "Connection":"keep-alive",
+    "Accept-Encoding":"gzip, deflate, sdch",
+    "Referer":"http://www.17500.cn/ssq/skills.php"}
 
-html = requests.get(config_dict['url_ex'])
+html = requests.get(config_dict['url_ex'], headers = headers)
 
 soup = BeautifulSoup(html.content, "html.parser", from_encoding='utf-8')
 tag_str = config_dict['pattern_tag_ex']['tag']
@@ -31,12 +36,12 @@ CURRENT_INDEX = str(config.cfg.CURRENT_INDEX)
 
 for tag in tags:
     try:
-        inner_url = tag.a['href']  # 取得内部链接
+        inner_url = tag.contents[0].a['href']  # 取得内部链接
     except KeyError:
         continue
     except TypeError:
         continue
-    auther_and_index = tag.a.get_text()  # 取得作者名和期数
+    article_title = tag.contents[0].a.get_text()  # 取得作者名和期数
 
     inner_url_abs = config_dict['url_prefix'] + inner_url
     
@@ -44,23 +49,12 @@ for tag in tags:
     index = ""
     index_pattern = config_dict['index_pattern']
     auther_pattern = config_dict['auther_pattern']
-    if re.search(index_pattern, auther_and_index):
-        index = re.search(index_pattern, auther_and_index).group(0)  # 期数
+    if re.findall(index_pattern, article_title) != []:
+        index = re.search(index_pattern, article_title)[0][-5:]  # 期数
     else:
         pass
-    if re.search(auther_pattern, auther_and_index):
-        # Most case : auther + mark + index
-        if site_name == "sina":
-            auther = re.search(auther_pattern, auther_and_index).group(0)[:-3] #作者
-        elif site_name == "zhcw":
-            auther = re.search(auther_pattern, auther_and_index).group(1) #作者
-        else:
-            pass
-        ### special case : auther + index + mark
-        if re.findall(r'(^.*)(第?\d{5}期?)', auther) != []:
-            auther = re.findall(r'(^.*)(第?\d{5}期?)', auther)[0][0]
-    else:
-        pass
+    auther = tag.contents[1].get_text()
+
     if auther == "" or index != CURRENT_INDEX:
         continue
     try:
